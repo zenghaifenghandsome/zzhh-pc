@@ -2,6 +2,8 @@ package main
 
 import (
 	"context"
+
+	"github.com/wailsapp/wails/v2/pkg/runtime"
 )
 
 // App struct
@@ -28,4 +30,8 @@ func (a App) domReady(ctx context.Context) {
 // shutdown is called at application termination
 func (a *App) shutdown(ctx context.Context) {
 	// Perform your teardown here
+}
+
+func (a *App) CloseWind() {
+	runtime.Quit(a.ctx)
 }

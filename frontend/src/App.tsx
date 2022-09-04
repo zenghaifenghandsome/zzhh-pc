@@ -2,6 +2,9 @@ import {useNavigate,useRoutes} from 'react-router-dom'
 import {Button,Layout,Menu} from '@arco-design/web-react'
 import router from './router/router';
 import MainSider from './component/mainSider/mainSider';
+import MainHeader from './component/mainHeader/mainHeader';
+import { Suspense } from 'react';
+import MainSpin from './component/mainSpin/mainSpin';
 function App() {
   const routers = useRoutes(router)
   const nav = useNavigate()
@@ -11,15 +14,19 @@ function App() {
   return (
     <div>
         <Layout>
-          <Layout.Sider><MainSider /></Layout.Sider>
+          <Layout.Sider collapsed={true} style={{height:'100vh'}}><MainSider /></Layout.Sider>
           <Layout>
-            <Layout.Header></Layout.Header>
-            <Layout.Content>{routers}</Layout.Content>
+            <Layout.Header><MainHeader /></Layout.Header>
+            <Layout>
+              <Layout.Content>
+                <Suspense fallback={<MainSpin/>}>{routers}</Suspense>
+              </Layout.Content>
+              <Layout.Sider style={{width:"50px"}}></Layout.Sider>
+            </Layout>
+            
           </Layout>
-          <Layout.Sider></Layout.Sider>
+          
         </Layout>
-        
-      
     </div>
     
   );

@@ -20,15 +20,15 @@ func main() {
 	// Create application with options
 	err := wails.Run(&options.App{
 		Title:  "zzhh-pc",
-		Width:  1024,
-		Height: 768,
+		Width:  2000,
+		Height: 1000,
 		// MinWidth:          720,
 		// MinHeight:         570,
 		// MaxWidth:          1280,
 		// MaxHeight:         740,
 		DisableResize:     false,
 		Fullscreen:        false,
-		Frameless:         false,
+		Frameless:         true,
 		StartHidden:       false,
 		HideWindowOnClose: false,
 		RGBA:              &options.RGBA{R: 255, G: 255, B: 255, A: 255},
