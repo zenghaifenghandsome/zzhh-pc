@@ -5,6 +5,7 @@ const Home = lazy(()=>import("../pages/home/home"))
 const Bc = lazy(()=> import("../pages/bc/bc"))
 const BcDetail = lazy(()=> import("../pages/bc/bcDetail/bcDetail"))
 const Music = lazy(()=> import("../pages/music/music"))
+const Blog = lazy(()=> import('../pages/blog/blog'))
 
 const router:RouteObject[] = [
     {
@@ -19,6 +20,9 @@ const router:RouteObject[] = [
     },{
         path:'/music',
         element:<Music />
+    },{
+        path:'/blog',
+        element:<Blog />
     }
 ]
 

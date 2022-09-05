@@ -1,4 +1,4 @@
-import { Card, Tag,Divider } from "@arco-design/web-react";
+import { Card, Tag,Divider,Typography } from "@arco-design/web-react";
 import {IconHeartFill,IconHeart,IconMessage,IconLink} from "@arco-design/web-react/icon"
 import { useEffect, useState } from "react";
 import { api_getAllOkBc } from "../../tools/ajax";
@@ -28,11 +28,16 @@ const Bc = () =>{
                             </div>
                             <div style={{marginLeft:10}}>
                                 <div className="bc-link-title">{bc.title}</div>
-                                <div style={{marginTop:10}} className='bc-describ'>{bc.describ}</div>
+                                <div style={{marginTop:10}} className='bc-describ'>
+                                    <Typography.Text ellipsis={{rows:2}}>
+                                        {bc.describ}
+                                    </Typography.Text>
+                                        
+                                </div>
                             </div>
                         </div>
                         <div>
-                            {bc.tags.split(',').map((tag:any)=>(<Tag key={tag} style={{marginRight:'5px'}}>{tag}</Tag>))}
+                            {bc.tags.split(',').map((tag:any)=>(<Tag key={tag} style={{marginLeft:'5px'}}>{tag}</Tag>))}
                         </div>
                     </Link>
                     <Divider className="divider" style={{margin:0}}/>

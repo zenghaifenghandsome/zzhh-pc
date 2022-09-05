@@ -1,6 +1,6 @@
 import {Menu} from '@arco-design/web-react';
 import {matchRoutes, useLocation, useNavigate} from 'react-router-dom';
-import {IconHome,IconCode} from '@arco-design/web-react/icon'
+import {IconHome,IconCode,IconMusic,IconBook} from '@arco-design/web-react/icon'
 import { useEffect, useState } from 'react';
 import router from '../../router/router';
 const MainSider = () =>{
@@ -44,7 +44,10 @@ const MainSider = () =>{
                     <IconCode />bc
                 </Menu.Item>
                 <Menu.Item key='/music'>
-                    <IconCode />music
+                    <IconMusic />music
+                </Menu.Item>
+                <Menu.Item key='/blog'>
+                    <IconBook />blog
                 </Menu.Item>
             </Menu>
         </>

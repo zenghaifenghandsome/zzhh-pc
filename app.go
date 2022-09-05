@@ -32,6 +32,22 @@ func (a *App) shutdown(ctx context.Context) {
 	// Perform your teardown here
 }
 
+// 关闭窗口
 func (a *App) CloseWind() {
 	runtime.Quit(a.ctx)
+}
+
+// 窗口最大化
+func (a *App) MaxWind() {
+	runtime.WindowMaximise(a.ctx)
+}
+
+// 还原窗口
+func (a *App) UnMaxWind() {
+	runtime.WindowUnmaximise(a.ctx)
+}
+
+// 窗口最小化
+func (a *App) MinWind() {
+	runtime.WindowMinimise(a.ctx)
 }

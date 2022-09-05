@@ -5,3 +5,15 @@
 export function CloseWind() {
   return window['go']['main']['App']['CloseWind']();
 }
+
+export function MaxWind() {
+  return window['go']['main']['App']['MaxWind']();
+}
+
+export function MinWind() {
+  return window['go']['main']['App']['MinWind']();
+}
+
+export function UnMaxWind() {
+  return window['go']['main']['App']['UnMaxWind']();
+}
