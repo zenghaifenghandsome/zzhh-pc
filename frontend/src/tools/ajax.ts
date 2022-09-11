@@ -1,6 +1,6 @@
 import axios from "axios";
 
-let baseURL = 'http://localhost:9000'
+let baseURL = 'http://localhost:8000'
 const musicUrl='http://101.35.101.200:3000'
 const cookie="NMTID=00OCi7M1t6BpKAuCEH4lK-Jr8NXYuEAAAGAqO2Ftg; Max-Age=315360000; Expires=Thu, 06 May 2032 13:06:20 GMT; Path=/;;MUSIC_A_T=1601877509256;" +
     " Max-Age=2147483647; Expires=Sat, 27 May 2090 16:20:27 GMT; Path=/wapi/clientlog;;MUSIC_A_T=1601877509256; Max-Age=2147483647; Expires=Sat, 27 May 2090 16:20:27 GMT;" +

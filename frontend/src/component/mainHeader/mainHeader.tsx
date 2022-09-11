@@ -20,7 +20,7 @@ const MainHeader = () =>{
         (window as any).go.main.App.MinWind()
     }
     return(
-        <>
+        <div className="main-header">
             <Card data-wails-drag className="main-header">
                 <div className="main-header-buttonGroup">
                     <Button status="warning" shape="circle" type="primary" onClick={minWind} style={{marginRight:'5px'}}>-</Button>
@@ -28,7 +28,7 @@ const MainHeader = () =>{
                     <Button status="danger" shape="circle" type="primary" onClick={quitApp} style={{marginRight:'5px'}}>x</Button>
                 </div>
             </Card>
-        </>
+        </div>
     )
 }
 export default MainHeader;

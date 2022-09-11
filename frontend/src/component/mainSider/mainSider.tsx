@@ -36,7 +36,7 @@ const MainSider = () =>{
     return(
         <>
             <Menu theme="light"
-            selectedKeys={selectKey} onClickMenuItem={menuClick} style={{height:'100%'}}>
+            selectedKeys={selectKey} onClickMenuItem={menuClick} style={{height:'100%',position:'fixed',top:0,left:0,zIndex:10}}>
                 <Menu.Item key='/'>
                     <IconHome />home
                 </Menu.Item>

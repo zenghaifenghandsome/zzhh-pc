@@ -5,6 +5,7 @@ import MainSider from './component/mainSider/mainSider';
 import MainHeader from './component/mainHeader/mainHeader';
 import { Suspense } from 'react';
 import MainSpin from './component/mainSpin/mainSpin';
+import './app.less'
 function App() {
   const routers = useRoutes(router)
   const nav = useNavigate()
@@ -15,10 +16,10 @@ function App() {
     <div>
         <Layout>
           <Layout.Sider collapsed={true} style={{height:'100vh'}}><MainSider /></Layout.Sider>
-          <Layout>
+          <Layout >
             <Layout.Header><MainHeader /></Layout.Header>
-            <Layout>
-              <Layout.Content>
+            <Layout style={{marginTop:50}}>
+              <Layout.Content >
                 <Suspense fallback={<MainSpin/>}>{routers}</Suspense>
               </Layout.Content>
               <Layout.Sider style={{width:"50px"}}></Layout.Sider>

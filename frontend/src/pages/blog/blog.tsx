@@ -29,8 +29,9 @@ const Blog = () =>{
                         </div>
                         <Link to={`/blog/article/${blog.ID}`} style={{textDecorationLine: 'none'}}>
                             <div className="blog-title">{blog.blogtitle}</div>
+                            <div style={{marginBottom:10}}>{blog.blogintroduce}</div>
                         </Link>
-                        <div style={{marginBottom:10}}>{blog.blogintroduce}</div>
+                        
                         <div style={{display:'flex'}}>
                             <div style={{marginRight:10}}><IconEye />{blog.blogreadnumb}</div>
                             <div style={{marginRight:10}}><IconThumbUp />{blog.bloglikenumb}</div>

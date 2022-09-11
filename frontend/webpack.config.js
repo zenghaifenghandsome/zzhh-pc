@@ -9,7 +9,7 @@ module.exports = {
   },
   resolve: {
     // Add `.ts` and `.tsx` as a resolvable extension.
-    extensions: [".ts", ".tsx",".js"]
+    extensions: ["*",".ts", ".tsx",".js",".es.js"]
   },
   module: {
     rules: [
@@ -36,7 +36,7 @@ module.exports = {
         }]
       },
       {
-        test: /\.css$/i,
+        test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
     ],
