@@ -6,6 +6,7 @@ import MainHeader from './component/mainHeader/mainHeader';
 import { Suspense } from 'react';
 import MainSpin from './component/mainSpin/mainSpin';
 import './app.less'
+import SecondMenu from './component/secondMenu/secondMenu';
 function App() {
   const routers = useRoutes(router)
   const nav = useNavigate()
@@ -22,7 +23,7 @@ function App() {
               <Layout.Content >
                 <Suspense fallback={<MainSpin/>}>{routers}</Suspense>
               </Layout.Content>
-              <Layout.Sider style={{width:"50px"}}></Layout.Sider>
+              <Layout.Sider style={{width:"60px"}}><SecondMenu /></Layout.Sider>
             </Layout>
             
           </Layout>
