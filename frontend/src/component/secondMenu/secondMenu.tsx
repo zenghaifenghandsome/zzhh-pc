@@ -1,5 +1,6 @@
 import { Avatar, Button, Divider, Dropdown, Menu } from "@arco-design/web-react";
 import {IconHome,IconCode,IconMusic,IconBook} from '@arco-design/web-react/icon'
+import { useNavigate } from "react-router-dom";
 import CodeAdd from "../codeAdd/codeAdd";
 
 const droplist = (
@@ -9,6 +10,10 @@ const droplist = (
 )
 const SecondMenu = () =>{
 
+  const route = useNavigate()
+  const toblogEditor = () =>{
+    route('/blog/addBlog')
+  } 
   return(
     <div style={{position:'fixed',top:60,right:0,width:55}}>
       <div style={{position:'relative',display:'block'}}>
@@ -18,7 +23,7 @@ const SecondMenu = () =>{
         <Divider style={{margin:'5px 0'}}/>
         <CodeAdd />
         <Button type="primary" size='large' style={{marginLeft:7,marginBottom:5}} icon={<IconMusic />} />
-        <Button type="primary" size='large' style={{marginLeft:7,marginBottom:5}} icon={<IconBook />} />
+        <Button type="primary" size='large' style={{marginLeft:7,marginBottom:5}} icon={<IconBook />} onClick={toblogEditor}/>
       </div>
       
     </div>

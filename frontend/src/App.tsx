@@ -18,7 +18,7 @@ function App() {
         <Layout>
           <Layout.Sider collapsed={true} style={{height:'100vh'}}><MainSider /></Layout.Sider>
           <Layout >
-            <Layout.Header><MainHeader /></Layout.Header>
+            <Layout.Header className="move"><MainHeader /></Layout.Header>
             <Layout style={{marginTop:50}}>
               <Layout.Content >
                 <Suspense fallback={<MainSpin/>}>{routers}</Suspense>

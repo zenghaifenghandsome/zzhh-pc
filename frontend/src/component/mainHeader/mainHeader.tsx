@@ -1,5 +1,5 @@
 import { Card,Button} from "@arco-design/web-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import './mainHeader.less'
 
 const MainHeader = () =>{
@@ -19,9 +19,10 @@ const MainHeader = () =>{
     const minWind = () =>{
         (window as any).go.main.App.MinWind()
     }
+    
     return(
         <div className="main-header">
-            <Card data-wails-drag className="main-header">
+            <Card className="main-header"> 
                 <div className="main-header-buttonGroup">
                     <Button status="warning" shape="circle" type="primary" onClick={minWind} style={{marginRight:'5px'}}>-</Button>
                     <Button status="success" shape="circle" type="primary" onClick={e=>maxWind(winState)} style={{marginRight:'5px'}}>+</Button>
