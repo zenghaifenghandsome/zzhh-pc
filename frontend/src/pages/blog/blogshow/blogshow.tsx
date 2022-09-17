@@ -44,7 +44,7 @@ const BlogShow = () =>{
               </div>
             </div>
           </div>
-          <div style={{margin:'0 10px'}}><img src={article.blogarticlepic} alt="pic" style={{width:'100%'}} /></div>
+          <div style={{margin:'0 10px'}}>{article.blogarticlepic.length===0?<></>:<img src={article.blogarticlepic} alt="pic" style={{width:'100%'}} />}</div>
           <Md modelValue={article.blogdetail} previewOnly className="md"/>
         </div>
         

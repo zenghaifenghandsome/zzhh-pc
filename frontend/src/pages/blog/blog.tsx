@@ -27,7 +27,7 @@ const Blog = () =>{
                             <Divider type="vertical"/>
                             <span>{blog.blogtags}</span>
                         </div>
-                        <Link to={`/blog/article/${blog.ID}`} style={{textDecorationLine: 'none'}}>
+                        <Link to={`/blog/article/${blog.ID}`} style={{textDecorationLine: 'none',color:'gray'}}>
                             <div className="blog-title">{blog.blogtitle}</div>
                             <div style={{marginBottom:10}}>{blog.blogintroduce}</div>
                         </Link>
@@ -39,7 +39,7 @@ const Blog = () =>{
                         </div>
                     </div>
                     <div>
-                        <img src={blog.blogarticlepic} style={{width:100,height:'auto'}} alt="tupian" />
+                        {blog.blogarticlepic.length===0?<></>:<img src={blog.blogarticlepic} style={{width:100,height:'auto'}} alt="tupian" />}
                     </div>
                 </Card>
             ))}</div>

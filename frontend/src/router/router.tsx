@@ -8,6 +8,7 @@ const Music = lazy(()=> import("../pages/music/music"))
 const Blog = lazy(()=> import('../pages/blog/blog'))
 const BlogShow = lazy(()=> import('../pages/blog/blogshow/blogshow'))
 const AddBlog = lazy(()=> import('../pages/blog/addBlog/addBlog'))
+const Login = lazy(()=> import('../pages/login/login'))
 const router:RouteObject[] = [
     {
         path:'/',
@@ -30,6 +31,9 @@ const router:RouteObject[] = [
     },{
         path:'/blog/addBlog',
         element:<AddBlog />
+    },{
+        path:'/login',
+        element:<Login />
     }
 ]
 

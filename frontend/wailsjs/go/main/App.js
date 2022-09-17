@@ -6,12 +6,20 @@ export function CloseWind() {
   return window['go']['main']['App']['CloseWind']();
 }
 
+export function GetWindPosition() {
+  return window['go']['main']['App']['GetWindPosition']();
+}
+
 export function MaxWind() {
   return window['go']['main']['App']['MaxWind']();
 }
 
 export function MinWind() {
   return window['go']['main']['App']['MinWind']();
+}
+
+export function SetWinPosition(arg1) {
+  return window['go']['main']['App']['SetWinPosition'](arg1);
 }
 
 export function UnMaxWind() {

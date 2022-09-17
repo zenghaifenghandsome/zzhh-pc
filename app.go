@@ -51,3 +51,23 @@ func (a *App) UnMaxWind() {
 func (a *App) MinWind() {
 	runtime.WindowMinimise(a.ctx)
 }
+
+// get window positon
+type Position struct {
+	X int
+	Y int
+}
+
+func (a *App) GetWindPosition() (p Position) {
+	var x int
+	var y int
+	x, y = runtime.WindowGetPosition(a.ctx)
+	p.X = x
+	p.Y = y
+	return p
+}
+
+// set wind position
+func (a *App) SetWinPosition(p Position) {
+	runtime.WindowSetPosition(a.ctx, p.X, p.Y)
+}
