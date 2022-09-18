@@ -56,8 +56,9 @@ const SecondMenu = () =>{
   return(
     <div style={{position:'fixed',top:60,right:0,width:55}}>
       <div style={{position:'relative',display:'block'}}>
-        <Dropdown droplist={droplist}> 
-          <Avatar size={50} onClick={userHandle}><img style={{width:50}} src="http://qiniu.zzhh.asia/22.jpg" alt="avator" /></Avatar>
+        <Dropdown droplist={droplist}> {
+          getUser()===undefined?<Avatar size={50} onClick={userHandle}>user</Avatar>:<Avatar size={50} onClick={userHandle}><img style={{width:50}} src="http://qiniu.zzhh.asia/22.jpg" alt="avator" /></Avatar>
+        }
         </Dropdown>
         <Divider style={{margin:'5px 0'}}/>
         <CodeAdd />
