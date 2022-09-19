@@ -3996,6 +3996,11 @@
   "resolved" "https://registry.npmmirror.com/entities/-/entities-2.2.0.tgz"
   "version" "2.2.0"
 
+"entities@^4.4.0":
+  "integrity" "sha512-oYp7156SP8LkeGD0GF85ad1X9Ai79WtRsZ2gxJqtBuzH+98YUV6jkHEKlZkMbcrjJjIVJNIDP/3WL9wQkoPbWA=="
+  "resolved" "https://registry.npmjs.org/entities/-/entities-4.4.0.tgz"
+  "version" "4.4.0"
+
 "envinfo@^7.7.3":
   "integrity" "sha512-/o+BXHmB7ocbHEAs6F2EnG0ogybVVUdkRunTT2glZU9XAaGmhqskrvKwqXuDfNjEO0LZKWdejEEpnq8aM0tOaw=="
   "resolved" "https://registry.npmmirror.com/envinfo/-/envinfo-7.8.1.tgz"
@@ -4525,7 +4530,7 @@
   dependencies:
     "flat-cache" "^3.0.4"
 
-"file-loader@^6.2.0":
+"file-loader@*", "file-loader@^6.2.0", "file-loader@~6.2.0":
   "integrity" "sha512-qo3glqyTa61Ytg4u73GultjHGjdRyig3tG6lPtyX/jOEJvHif9uB0/OCI2Kif6ctF3caQTW2G5gym21oAsI4pw=="
   "resolved" "https://registry.npmmirror.com/file-loader/-/file-loader-6.2.0.tgz"
   "version" "6.2.0"
@@ -4978,7 +4983,15 @@
   "resolved" "https://registry.npmmirror.com/html-escaper/-/html-escaper-2.0.2.tgz"
   "version" "2.0.2"
 
-"html-minifier-terser@^6.0.2":
+"html-loader@^4.1.0":
+  "integrity" "sha512-QDDNmLgn96NWtTPx/VXRerFXH0hn7cm4bruqsZ333GCb+rqiqGurcxtP/M52wcui1/iLiu0l5ms/McE7/Ik6aQ=="
+  "resolved" "https://registry.npmjs.org/html-loader/-/html-loader-4.1.0.tgz"
+  "version" "4.1.0"
+  dependencies:
+    "html-minifier-terser" "^6.1.0"
+    "parse5" "^7.0.0"
+
+"html-minifier-terser@^6.0.2", "html-minifier-terser@^6.1.0":
   "integrity" "sha512-YXxSlJBZTP7RS3tWnQw74ooKa6L9b9i9QYXY21eUEvhZ3u9XLfv6OnFsQq6RxkhHygsaUMvYsZRV5rU/OVNZxw=="
   "resolved" "https://registry.npmmirror.com/html-minifier-terser/-/html-minifier-terser-6.1.0.tgz"
   "version" "6.1.0"
@@ -6746,6 +6759,13 @@
   "integrity" "sha512-3YHlOa/JgH6Mnpr05jP9eDG254US9ek25LyIxZlDItp2iJtwyaXQb57lBYLdT3MowkUFYEV2XXNAYIPlESvJlA=="
   "resolved" "https://registry.npmmirror.com/parse-node-version/-/parse-node-version-1.0.1.tgz"
   "version" "1.0.1"
+
+"parse5@^7.0.0":
+  "integrity" "sha512-kwpuwzB+px5WUg9pyK0IcK/shltJN5/OVhQagxhCQNtT9Y9QRZqNY2e1cmbu/paRh5LMnz/oVTVLBpjFmMZhSg=="
+  "resolved" "https://registry.npmjs.org/parse5/-/parse5-7.1.1.tgz"
+  "version" "7.1.1"
+  dependencies:
+    "entities" "^4.4.0"
 
 "parse5@6.0.1":
   "integrity" "sha512-Ofn/CTFzRGTTxwpNEs9PP93gXShHcTq255nzRYSKe8AkVpZY7e1fpmTfOyoIvjP5HG7Z2ZM7VS9PPhQGW2pOpw=="
@@ -8589,6 +8609,13 @@
   "resolved" "https://registry.npmmirror.com/svg-parser/-/svg-parser-2.0.4.tgz"
   "version" "2.0.4"
 
+"svg-url-loader@^8.0.0":
+  "integrity" "sha512-5doSXvl18hY1fGsRLdhWAU5jgzgxJ06/gc/26cpuDnN0xOz1HmmfhkpL29SSrdIvhtxQ1UwGzmk7wTT/l48mKw=="
+  "resolved" "https://registry.npmjs.org/svg-url-loader/-/svg-url-loader-8.0.0.tgz"
+  "version" "8.0.0"
+  dependencies:
+    "file-loader" "~6.2.0"
+
 "svgo@^1.2.2":
   "integrity" "sha512-yhy/sQYxR5BkC98CY7o31VGsg014AKLEPxdfhora76l36hD9Rdy5NZA/Ocn6yayNPgSamYdtX2rFJdcv07AYVw=="
   "resolved" "https://registry.npmmirror.com/svgo/-/svgo-1.3.2.tgz"
@@ -8953,6 +8980,15 @@
   "version" "4.4.1"
   dependencies:
     "punycode" "^2.1.0"
+
+"url-loader@^4.1.1":
+  "integrity" "sha512-3BTV812+AVHHOJQO8O5MkWgZ5aosP7GnROJwvzLS9hWDj00lZ6Z0wNak423Lp9PBZN05N+Jk/N5Si8jRAlGyWA=="
+  "resolved" "https://registry.npmjs.org/url-loader/-/url-loader-4.1.1.tgz"
+  "version" "4.1.1"
+  dependencies:
+    "loader-utils" "^2.0.0"
+    "mime-types" "^2.1.27"
+    "schema-utils" "^3.0.0"
 
 "url-parse@^1.5.3":
   "integrity" "sha512-WypcfiRhfeUP9vvF0j6rw0J3hrWrw6iZv3+22h6iRMJ/8z1Tj6XfLP4DsUix5MhMPnXpiHDoKyoZ/bdCkwBCiQ=="
