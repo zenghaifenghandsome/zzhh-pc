@@ -1,15 +1,38 @@
-import { Button, Card, Checkbox, Divider, Form, Input, Notification } from "@arco-design/web-react"
+import { Button, Card, Checkbox, Divider, Form, Input, Message} from "@arco-design/web-react"
 import { useRef,useState } from "react";
 import './login.less';
-import loginPic from '../../pic/loginPic.svg'
+import { api_login } from "../../tools/ajax";
+import { saveUser } from "../../tools/localstore";
+import { useNavigate } from "react-router-dom";
+import {useDispatch} from 'react-redux'
+import { updata } from "../../tools/redux/reducer/userReducer";
 const Login = () =>{
+    const dispatch = useDispatch()
+    const route = useNavigate()
     const [checked, setChecked] = useState<boolean>(false);
     const username = useRef<any>()
     const password = useRef<any>()
     const handleLogin = () =>{
         console.log(username.current.dom.value,password.current.dom.value)
         if(username.current.dom.value.length ===0){
-            Notification.error({content:'没账号怎么登录？',duration:3000})
+            Message.error({content:'没账号怎么登录？',duration:3000})
+        }else if(password.current.dom.value.length ===0){
+            Message.error({content:'没密码怎么登录？',duration:3000})
+        }else{
+            api_login(username.current.dom.value,password.current.dom.value).then((re:any)=>{
+                console.log(re.data)
+                saveUser({
+                    'avator':re.data.avator,
+                    'refreshToken':re.data.refreshToken, 
+                    //'refreshToken-status':re.data.refreshToken-status,
+                    'role':re.data.role,
+                    'token': re.data.token,
+                    'userid':re.data.userid, 
+                    'username':re.data.username,
+                })
+               route('/') 
+               dispatch(updata())
+            }).catch((err:any)=>{console.log(err)})
         }
     }
     return(
@@ -26,7 +49,7 @@ const Login = () =>{
                             <Input  ref={username}/>
                         </Form.Item>
                         <Form.Item label="密码">
-                            <Input  ref={password}/>
+                            <Input.Password  ref={password}/>
                         </Form.Item>
                         <Form.Item wrapperCol={{offset:4}}>
                             <Checkbox checked={checked} onChange={()=>setChecked(!checked)}>同意用户协议</Checkbox>

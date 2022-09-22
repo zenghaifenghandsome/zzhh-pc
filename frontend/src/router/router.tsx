@@ -9,6 +9,9 @@ const Blog = lazy(()=> import('../pages/blog/blog'))
 const BlogShow = lazy(()=> import('../pages/blog/blogshow/blogshow'))
 const AddBlog = lazy(()=> import('../pages/blog/addBlog/addBlog'))
 const Login = lazy(()=> import('../pages/login/login'))
+const Money = lazy(()=> import('../pages/money/money'))
+const Todo = lazy(()=> import('../pages/todo/todo'))
+const Admin = lazy(()=>import('../pages/admin/admin'))
 const router:RouteObject[] = [
     {
         path:'/',
@@ -34,6 +37,15 @@ const router:RouteObject[] = [
     },{
         path:'/login',
         element:<Login />
+    },{
+        path:'/money',
+        element:<Money />
+    },{
+        path:'/todo',
+        element:<Todo />
+    },{
+        path:'/admin',
+        element:<Admin />
     }
 ]
 

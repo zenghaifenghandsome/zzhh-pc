@@ -5,14 +5,19 @@ import '@arco-design/web-react/dist/css/arco.css';
 import reportWebVitals from './reportWebVitals';
 import {HashRouter} from 'react-router-dom'
 import './index.less';
+import store from './tools/redux/index'
+import {Provider} from 'react-redux'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-    <HashRouter>
-      <App />
-    </HashRouter>
+  <Provider store={store}>
+      <HashRouter>
+        <App />
+      </HashRouter>
+  </Provider>
+    
 );
 
 // If you want to start measuring performance in your app, pass a function

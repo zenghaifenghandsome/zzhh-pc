@@ -1,6 +1,6 @@
 import {Menu} from '@arco-design/web-react';
 import {matchRoutes, useLocation, useNavigate} from 'react-router-dom';
-import {IconHome,IconCode,IconMusic,IconBook} from '@arco-design/web-react/icon'
+import {IconHome,IconCode,IconMusic,IconBook,IconAlipayCircle,IconSelectAll,IconApps} from '@arco-design/web-react/icon'
 import { useEffect, useState } from 'react';
 import router from '../../router/router';
 const MainSider = () =>{
@@ -9,9 +9,7 @@ const MainSider = () =>{
     const location = useLocation()
     const nav = useNavigate()
     const menuClick = (key:string) =>{
-        
-            nav(key)   
-        
+        nav(key)   
     }
     useEffect(()=>{
         const routes = matchRoutes(router,location.pathname)
@@ -48,6 +46,15 @@ const MainSider = () =>{
                 </Menu.Item>
                 <Menu.Item key='/blog'>
                     <IconBook />blog
+                </Menu.Item>
+                <Menu.Item key='/money'>
+                    <IconAlipayCircle />记账
+                </Menu.Item>
+                <Menu.Item key='/todo'>
+                    <IconSelectAll />待办
+                </Menu.Item>
+                <Menu.Item key='/admin'>
+                    <IconApps />后台管理
                 </Menu.Item>
             </Menu>
         </>

@@ -40,8 +40,8 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
-        test:/\.(jpg|png|gif|svg)$/,
-        loader:"url-loader?limit=8192&name=[name].[ext]?[hash]"
+        test:/.(jpg|png|gif|svg)$/,
+        loader:"url-loader"
       }
     ],
   },

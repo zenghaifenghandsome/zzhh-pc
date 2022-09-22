@@ -23,10 +23,11 @@ const cookie="NMTID=00OCi7M1t6BpKAuCEH4lK-Jr8NXYuEAAAGAqO2Ftg; Max-Age=315360000
 
 
 const ajax = (url:string,data:object={},method:string="GET")=>{
-    if(method==="POST") axios.post(url,data)
+    if(method==="POST"){ return axios.post(url,data)}
     return axios.get(url,{params:data})
 }
 
+export const api_login = (username:string,password:string) => ajax(baseURL+'/login',{username,password},'POST')
 export const api_getAllOkBc = () => ajax(baseURL+"/biancheng/okAllBiancheng")
 
 export const api_getAllOkBlogs= ()=> ajax(baseURL+"/blog/allOkBlog")
