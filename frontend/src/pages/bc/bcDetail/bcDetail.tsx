@@ -2,6 +2,7 @@ import { Card,Avatar,Tag, Divider } from "@arco-design/web-react";
 import {IconEye, IconHeartFill} from '@arco-design/web-react/icon';
 import { useEffect,useState } from "react";
 import { useParams } from "react-router-dom";
+import Comments from "../../../component/comment/comment";
 import MainSpin from "../../../component/mainSpin/mainSpin";
 import TimeAgo from "../../../component/timeAgo/timeAgo";
 import { api_getBianChengDetail } from "../../../tools/ajax";
@@ -60,9 +61,7 @@ const BcDetail = () =>{
                     </div>
                 </div>
             </Card>
-            <Card title="评论">
-
-            </Card>
+            <Comments commentId={bcDetail.ID}/>
         </>
     )
 }

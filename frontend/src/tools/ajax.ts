@@ -28,7 +28,9 @@ const ajax = (url:string,data:object={},method:string="GET")=>{
 }
 
 export const api_login = (username:string,password:string) => ajax(baseURL+'/login',{username,password},'POST')
+
 export const api_getAllOkBc = () => ajax(baseURL+"/biancheng/okAllBiancheng")
+export const api_getBcComment = (id:string) => ajax(baseURL+"/biancheng/comment",{id})
 
 export const api_getAllOkBlogs= ()=> ajax(baseURL+"/blog/allOkBlog")
 
