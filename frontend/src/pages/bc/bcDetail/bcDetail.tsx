@@ -25,14 +25,14 @@ const BcDetail = () =>{
                     <Avatar size={64} shape="circle">
                         <img src={bcDetail.iconaddr} alt="头像"/>
                     </Avatar>
-                    <div>{bcDetail.title}</div>
-                    <div>
+                    <div style={{marginTop:10}}>{bcDetail.title}</div>
+                    <div style={{marginTop:10}}>
                         <Tag style={{marginRight:5}} icon={<IconEye />}>{bcDetail.look}</Tag>
                         <Tag style={{marginRight:5}} icon={<IconHeartFill />}>{bcDetail.like}</Tag>
                         <Tag style={{marginRight:5}} icon={<IconEye />}>{bcDetail.look}</Tag>
                     </div>
-                    <div>{bcDetail.describ}</div>
-                    <div>{bcDetail.tags.split(',').map((tag:any)=>(
+                    <div style={{marginTop:10}}>{bcDetail.describ}</div>
+                    <div style={{marginTop:10}}>{bcDetail.tags.split(',').map((tag:any)=>(
                         <Tag style={{marginRight:5}} key={tag}>{tag}</Tag>
                     ))}</div>
                 </div>

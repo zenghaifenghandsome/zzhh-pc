@@ -30,7 +30,11 @@ const ajax = (url:string,data:object={},method:string="GET")=>{
 export const api_login = (username:string,password:string) => ajax(baseURL+'/login',{username,password},'POST')
 
 export const api_getAllOkBc = () => ajax(baseURL+"/biancheng/okAllBiancheng")
-export const api_getBcComment = (id:string) => ajax(baseURL+"/biancheng/comment",{id})
+export const api_getBcComment = (id:any) => ajax(baseURL+"/biancheng/comment",{id})
+//get replyComments
+export const api_getReplyComments = (bcCommentID:string) => ajax(baseURL+"/biancheng/comment/replyComment",{bcCommentID})
+//add replyComment
+export const api_addReplyComment = (reply:any) => ajax(baseURL+"/biancheng/comment/replyComment",reply,"POST")
 
 export const api_getAllOkBlogs= ()=> ajax(baseURL+"/blog/allOkBlog")
 
