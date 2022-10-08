@@ -1,7 +1,8 @@
-import { Button, Card, Comment, Empty} from "@arco-design/web-react";
+import { Button, Card, Comment, Empty, Modal,Input} from "@arco-design/web-react";
 import { IconHeart, IconHeartFill,IconStarFill,IconStar} from "@arco-design/web-react/icon";
 import { useEffect, useState } from "react";
-import { api_getBcComment,api_addReplyComment } from "../../tools/ajax";
+import { useSelector } from "react-redux";
+import { api_getBcComment,api_addReplyComment, api_addBcComment } from "../../tools/ajax";
 import ReplyComment from "./replyComment";
 import ReplyCommentEditor from "./replyCommentEditor";
 
@@ -15,7 +16,9 @@ const Comments:React.FC<commentProps> = (props:any) => {
     const [like, setLike] = useState<boolean>(false);
     const [star, setStar] = useState<boolean>(false);
     const [isreload, setisReload] = useState<boolean>(false);
-    
+    const [visible,setVisible] = useState<boolean>(false);
+    const [textValue,setTextValue] = useState<any>()
+    const userInfo = useSelector((state:any)=>state.user.value)
     useEffect(()=>{
         /**
          * @commentId: bcId编程导航id 
@@ -32,10 +35,34 @@ const Comments:React.FC<commentProps> = (props:any) => {
         api_getBcComment(commentId).then((req:any)=>{
             setThisComment(req.data.data)
         }).catch((err:any)=>{console.log(err)})
-    },[isreload])
+    },[isreload,visible])
+
+    const inputText = (text:string) =>{
+        console.log(text)
+        setTextValue(text)
+    }
+    const release = () =>{
+        setVisible(false)
+        let comment = {
+            BcID:commentId,
+            Content:textValue,
+            UserId:userInfo.userid,
+            UserAvator:userInfo.avator,
+            UserName:userInfo.username,
+            LikeNumb:0,
+            LowNumb:0,
+        }
+        api_addBcComment(comment).then((req:any)=>{
+            console.log(req)
+        }).catch((err:any)=>{console.log(err)})
+
+        api_getBcComment(commentId).then((req:any)=>{
+            setThisComment(req.data.data)
+        }).catch((err:any)=>{console.log(err)})
+    }
     return(
         <>
-            <Card title="评论" style={{margin:'0 10px'}} extra={<Button type="primary">写评论</Button>}>
+            <Card title="评论" style={{margin:'0 10px'}} extra={<Button type="primary" onClick={()=>setVisible(true)}>写评论</Button>}>
                {thisComment===null||thisComment.length===0? <Empty /> : thisComment.map((comment:any,index:any)=>(<Comment key={index}
                author={comment.UserName} 
                avatar={comment.UserAvator} 
@@ -54,6 +81,9 @@ const Comments:React.FC<commentProps> = (props:any) => {
                 </span>,
                 <span className='custom-comment-action' key='reply' ><ReplyCommentEditor bcID={commentId} commentID={comment.ID} replyReload={()=>{return}}  reload={reload}/></span>]}><ReplyComment bcid={commentId} reload={isreload} replyCommentID={comment.ID}/></Comment>))}
             </Card>
+            <Modal visible={visible} onOk={release} title="写评论" okText="发布">
+                   <Input.TextArea autoSize={true} value={textValue} onChange={inputText}/>
+            </Modal>
         </>
     )
 }

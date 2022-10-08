@@ -31,6 +31,8 @@ export const api_login = (username:string,password:string) => ajax(baseURL+'/log
 
 export const api_getAllOkBc = () => ajax(baseURL+"/biancheng/okAllBiancheng")
 export const api_getBcComment = (id:any) => ajax(baseURL+"/biancheng/comment",{id})
+//add bcComment 
+export const api_addBcComment = (bcComment:any) => ajax(baseURL+"/biancheng/comment",bcComment,'POST')
 //get replyComments
 export const api_getReplyComments = (bcCommentID:string) => ajax(baseURL+"/biancheng/comment/replyComment",{bcCommentID})
 //add replyComment
