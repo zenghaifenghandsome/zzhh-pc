@@ -1,4 +1,4 @@
-import { Card, Tag,Divider,Typography } from "@arco-design/web-react";
+import { Card, Tag,Divider,Typography,Empty } from "@arco-design/web-react";
 import {IconHeartFill,IconHeart,IconMessage,IconLink} from "@arco-design/web-react/icon"
 import { useEffect, useState } from "react";
 import { api_getAllOkBc } from "../../tools/ajax";
@@ -15,7 +15,7 @@ const Bc = () =>{
         }).catch((err:any)=>{console.log(err)})
     },[])
     if(bcs.length<=0){
-        return <MainSpin />
+        return <Empty />
     }
     return(
         <>

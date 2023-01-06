@@ -1,7 +1,7 @@
 import { Avatar, Button, Divider, Dropdown, Menu, Notification } from "@arco-design/web-react";
 import {IconMusic,IconBook} from '@arco-design/web-react/icon'
 import { useNavigate } from "react-router-dom";
-import {removeUser,} from "../../tools/localstore";
+import {removeUser} from "../../tools/localstore";
 import CodeAdd from "../codeAdd/codeAdd";
 import {useSelector,useDispatch} from 'react-redux'
 import { updata } from "../../tools/redux/reducer/userReducer";
@@ -9,27 +9,30 @@ import { updata } from "../../tools/redux/reducer/userReducer";
 
 
 const SecondMenu = () =>{
-
+  const route = useNavigate()
   const loginOut = () =>{
     removeUser()
     dispatch(updata())
   }
-  
+  const toUserCenter = () =>{
+    if(userinfo===null || userinfo===undefined){
+      route("/login")
+    }else{
+      route("/userCenter")
+    }
+    
+  }
   const droplist = (
     <Menu>
-      <Menu.Item key="userCenter">个人中心</Menu.Item>
+      <Menu.Item key="userCenter" onClick={toUserCenter}>个人中心</Menu.Item>
       <Menu.Item key="loginOut" onClick={loginOut}>退出</Menu.Item>
     </Menu>
   )
 
-
-
-
-
   const userinfo = useSelector((state:any)=> state.user.value)
   const dispatch = useDispatch()
   
-  const route = useNavigate()
+  
   const toblogEditor = () =>{
     route('/blog/addBlog')
   } 

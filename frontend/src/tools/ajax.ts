@@ -28,7 +28,15 @@ const ajax = (url:string,data:object={},method:string="GET")=>{
 }
 
 export const api_login = (username:string,password:string) => ajax(baseURL+'/login',{username,password},'POST')
+export const api_register = (user:any) => ajax(baseURL+"/register",user,"POST");
 
+export const api_getUserInfo = (userid:number) => ajax(baseURL+"/user/getUserInfo",{userid})
+export const api_updataUserInfoOneField = (updata:any) => ajax(baseURL+"/user/updataUserInfoOneField",updata)
+
+export const api_upload = (file:any) => ajax(baseURL+"/update",file,"POST")
+
+
+export const api_addBc = (bc:any) => ajax(baseURL+"/biancheng",bc,"POST")
 export const api_getAllOkBc = () => ajax(baseURL+"/biancheng/okAllBiancheng")
 export const api_getBcComment = (id:any) => ajax(baseURL+"/biancheng/comment",{id})
 //add bcComment 

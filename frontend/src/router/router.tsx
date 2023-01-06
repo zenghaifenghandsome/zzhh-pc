@@ -12,6 +12,9 @@ const Login = lazy(()=> import('../pages/login/login'))
 const Money = lazy(()=> import('../pages/money/money'))
 const Todo = lazy(()=> import('../pages/todo/todo'))
 const Admin = lazy(()=>import('../pages/admin/admin'))
+const Register = lazy(()=> import('../pages/register/register'))
+const UserCenter = lazy(()=>import('../pages/userCenter/userCenter'))
+const UserInfo = lazy(()=>import("../pages/userCenter/userInfo/userInfo"))
 const router:RouteObject[] = [
     {
         path:'/',
@@ -46,6 +49,15 @@ const router:RouteObject[] = [
     },{
         path:'/admin',
         element:<Admin />
+    },{
+        path:"/register",
+        element:<Register />
+    },{
+        path:"/userCenter",
+        element:<UserCenter />
+    },{
+        path:"/editUserInfo",
+        element:<UserInfo />
     }
 ]
 

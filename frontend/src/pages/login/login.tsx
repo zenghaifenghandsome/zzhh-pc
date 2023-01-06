@@ -21,19 +21,28 @@ const Login = () =>{
         }else{
             api_login(username.current.dom.value,password.current.dom.value).then((re:any)=>{
                 console.log(re.data)
-                saveUser({
-                    'avator':re.data.avator,
-                    'refreshToken':re.data.refreshToken, 
-                    //'refreshToken-status':re.data.refreshToken-status,
-                    'role':re.data.role,
-                    'token': re.data.token,
-                    'userid':re.data.userid, 
-                    'username':re.data.username,
-                })
-               route('/') 
-               dispatch(updata())
+                if(re.data.status ==="200"){
+                    saveUser({
+                        'avator':re.data.avator,
+                        'refreshToken':re.data.refreshToken, 
+                        //'refreshToken-status':re.data.refreshToken-status,
+                        'role':re.data.role,
+                        'token': re.data.token,
+                        'userid':re.data.userid, 
+                        'username':re.data.username,
+                    })
+                   route('/') 
+                   dispatch(updata())
+                }else{
+                    Message.error({content:re.data.message,duration:3000})
+                }
+                
             }).catch((err:any)=>{console.log(err)})
         }
+    }
+
+    const goRegister = () =>{
+        route('/register')
     }
     return(
         <div style={{display:'grid',justifyContent:'center',alignContent:"center",width:'100%'}}>
@@ -53,7 +62,9 @@ const Login = () =>{
                         </Form.Item>
                         <Form.Item wrapperCol={{offset:4}}>
                             <Checkbox checked={checked} onChange={()=>setChecked(!checked)}>同意用户协议</Checkbox>
-                            <span style={{marginLeft:100}}>忘记密码or注册账号</span>
+                            <span style={{marginLeft:100}}>
+                                <span className="remenberPwd_link">忘记密码</span>or<span className="register_link" onClick={goRegister}>注册账号</span>
+                            </span>
                         </Form.Item>
                         <Form.Item wrapperCol={{offset:6}}>
                             <Button type="primary" style={{marginRight:100,width:100,height:40}}>不登录</Button>
