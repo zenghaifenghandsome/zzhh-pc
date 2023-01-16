@@ -1,7 +1,16 @@
+import { useEffect } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
+import AdminNav from "./adminNav";
+
 const Admin = () =>{
+    const route = useNavigate()
+    useEffect(()=>{
+        route("/admin/biancheng")
+    },[])
     return(
         <>
-            <div>admin pages</div>
+            <div><AdminNav /></div>
+            <div><Outlet /></div>
         </>
     )
 }

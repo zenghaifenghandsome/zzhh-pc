@@ -54,9 +54,13 @@ const MainHeader = () =>{
             return
         }
     }
+    const cancelMoveWindows = () =>{
+        setWinState(false);
+        setMisdown(false);
+    }
     return(
         <div className="main-header">
-            <Card className="main-header" onMouseMove={setwind} onMouseDown={windMove} onMouseUp={mup}> 
+            <Card className="main-header" onMouseMove={setwind} onMouseDown={windMove} onMouseUp={mup} onMouseOut={cancelMoveWindows}> 
                 <div className="main-header-buttonGroup">
                     <Button status="warning" shape="circle" type="primary" onClick={minWind} style={{marginRight:'5px'}}>-</Button>
                     <Button status="success" shape="circle" type="primary" onClick={e=>maxWind(winState)} style={{marginRight:'5px'}}>+</Button>

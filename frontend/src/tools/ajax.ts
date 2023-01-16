@@ -37,7 +37,9 @@ export const api_upload = (file:any) => ajax(baseURL+"/update",file,"POST")
 
 
 export const api_addBc = (bc:any) => ajax(baseURL+"/biancheng",bc,"POST")
+export const api_getAllBCs = () => ajax(baseURL+"/biancheng")
 export const api_getAllOkBc = () => ajax(baseURL+"/biancheng/okAllBiancheng")
+export const api_deleteBc = (id:any) => ajax(baseURL+"/biancheng/deletBiancheng",{id})
 export const api_getBcComment = (id:any) => ajax(baseURL+"/biancheng/comment",{id})
 //add bcComment 
 export const api_addBcComment = (bcComment:any) => ajax(baseURL+"/biancheng/comment",bcComment,'POST')

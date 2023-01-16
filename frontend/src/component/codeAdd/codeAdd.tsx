@@ -1,4 +1,5 @@
 import { Avatar, Button, Cascader, Form, Input, Message, Modal, Upload } from "@arco-design/web-react"
+import useForm from "@arco-design/web-react/es/Form/useForm";
 import {IconCode, IconEdit} from '@arco-design/web-react/icon'
 import { useRef, useState } from "react";
 import { useSelector } from "react-redux";
@@ -11,6 +12,7 @@ const CodeAdd = () =>{
   const fileRef = useRef<any>();
   const [bcIcon,setBcIcon] = useState<any>("");
   const [tags,setTags] = useState<any>();
+  const [form]=Form.useForm();
 
   const titleRef = useRef<any>();
   const linkRef = useRef<any>();
@@ -67,14 +69,19 @@ const CodeAdd = () =>{
     }
     setTags(tagsArray.toString())
   }
+  const cancelHandle = () =>{
+    setVisi(false)
+    form.resetFields();
+
+  }
   
   return(
     <>
       <Button type="primary" size='large' style={{marginLeft:7,marginBottom:5}} onClick={()=>{setVisi(true)}} icon={<IconCode />}/>
-      <Modal style={{width:"50vw"}} title="推荐资源" visible={visi} onOk={doOk} className="addBc-modal">
-        <Form className="addBc-box" style={{display:'grid',gridTemplateColumns:"114px auto"}}>
+      <Modal style={{width:"50vw"}} title="推荐资源" visible={visi} onOk={doOk} className="addBc-modal" onCancel={cancelHandle}>
+        <Form form={form} className="addBc-box" style={{display:'grid',gridTemplateColumns:"114px auto"}}>
           <div className="addBc-info-avator">
-            <Form.Item>
+            <Form.Item field="avator">
               <div className="bc-upload-avator">
                 <Avatar 
                 style={{width:90,height:90}}
@@ -87,13 +94,13 @@ const CodeAdd = () =>{
             </Form.Item>
           </div>
           <div>
-            <Form.Item label="标题">
+            <Form.Item field="title" label="标题">
               <Input ref={titleRef} />
             </Form.Item>
-            <Form.Item label="链接">
+            <Form.Item field="link" label="链接">
               <Input ref={linkRef} />
             </Form.Item>
-            <Form.Item label="标签">
+            <Form.Item field="tag" label="标签">
               <Cascader options={codeTags} 
               mode="multiple" placeholder="请选择一下标签" 
               fieldNames={{children:"child",label:"name",value:"id"}}
@@ -102,10 +109,10 @@ const CodeAdd = () =>{
               onChange={selectTag}
               />
             </Form.Item>
-            <Form.Item label="简介">
+            <Form.Item field="detail" label="简介">
               <Input ref={describRef} />
             </Form.Item>
-            <Form.Item label="详情">
+            <Form.Item field="info" label="详情">
               <Input.TextArea ref={detailRef} />
             </Form.Item>
           </div>

@@ -1,5 +1,8 @@
-import {RouteObject} from 'react-router-dom'
-import { lazy } from "react";
+import {RouteObject, Routes} from 'react-router-dom'
+import { Children, lazy } from "react";
+import AdminNav from '../pages/admin/adminNav';
+import AdminBC from '../pages/admin/pages/adminBC';
+import AdminBlog from '../pages/admin/pages/adminBlog';
 
 const Home = lazy(()=>import("../pages/home/home"))
 const Bc = lazy(()=> import("../pages/bc/bc"))
@@ -48,7 +51,17 @@ const router:RouteObject[] = [
         element:<Todo />
     },{
         path:'/admin',
-        element:<Admin />
+        element:<Admin />,
+        children:[
+            {
+                path:"/admin/biancheng",
+                element:<AdminBC />
+            },{
+                path:"/admin/blog",
+                element:<AdminBlog />
+            }
+
+        ]
     },{
         path:"/register",
         element:<Register />
