@@ -17,12 +17,15 @@ const AddBlog = () =>{
             setBlogHeight(windowHeight-height-85)
         })
     },[])
+    const release = () =>{
+        
+    }
     return(
         <>
             <Card bodyStyle={{display:'flex'}} >
                 <Input placeholder='输入文章标题...' style={{backgroundColor:'white',minHeight:50,height:'5%',border:0,fontSize:25}} id="blogTitle"/>
                 <Button type="outline" className="blog-edit-title-button blog-edit-title-caogao">草稿箱</Button>
-                <Button type="primary" className="blog-edit-title-button">发布</Button>
+                <Button type="primary" className="blog-edit-title-button" onClick={release}>发布</Button>
             </Card>
             <Md modelValue={blogVal} onChange={setBlogVal} style={{height:blogHeight+"px"}}/>
         </>

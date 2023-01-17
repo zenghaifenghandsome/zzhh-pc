@@ -1,19 +1,18 @@
-import { Card, Divider } from "@arco-design/web-react";
+import { Card, Divider, Empty } from "@arco-design/web-react";
 import { useEffect, useState } from "react"
-import MainSpin from "../../component/mainSpin/mainSpin";
 import TimeAgo from "../../component/timeAgo/timeAgo";
 import { api_getAllOkBlogs } from "../../tools/ajax";
 import { Link } from "react-router-dom";
 import './blog.less';
 import { IconEye, IconMessage, IconThumbUp } from "@arco-design/web-react/icon";
 const Blog = () =>{
-    const [blogs,setBlogs] = useState<any>(null);
+    const [blogs,setBlogs] = useState<Array<any>>([]);
     useEffect(()=>{
         api_getAllOkBlogs().then((req:any)=>{
             setBlogs(req.data.data)
         }).catch((err:any)=>{console.log(err)})
     },[])
-    if(blogs===null){return <MainSpin />}
+    if(blogs.length===0){return <Empty />}
     return(
         <>
         <div className="blog-box">
