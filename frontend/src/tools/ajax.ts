@@ -80,3 +80,4 @@ export const api_getSongFormList = (data:any) => ajax(musicUrl+'/personalized',{
 //video
  export const api_getVideoSourceList = () => ajax(baseURL+"/video")
  export const api_videoProxy = (url:any) => ajax(baseURL+"/video/proxy",{"url":url})
+ export const api_getVideoList = (url:string,t:string,pg:number) => ajax(baseURL+"/video/video/videoGet",{url,t,pg})
