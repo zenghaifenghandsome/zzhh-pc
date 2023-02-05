@@ -13,6 +13,4 @@ export const userUpdata = () =>{
         newUser.avator=req.data.userinfo.avater
         saveUser(newUser)
     }).catch((err:any)=>{console.log(err)})
-    
-    
 }

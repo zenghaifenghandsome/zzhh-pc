@@ -1,3 +1,4 @@
+import { Message } from "@arco-design/web-react";
 import axios from "axios";
 
 let baseURL = 'http://localhost:8000'
@@ -23,8 +24,23 @@ const cookie="NMTID=00OCi7M1t6BpKAuCEH4lK-Jr8NXYuEAAAGAqO2Ftg; Max-Age=315360000
 
 
 const ajax = (url:string,data:object={},method:string="GET")=>{
-    if(method==="POST"){ return axios.post(url,data)}
-    return axios.get(url,{params:data})
+    axios.defaults.timeout=20000
+    return new Promise((resovle:any,reject:any)=>{
+        let promise
+        if(method==="POST"){
+           promise= axios.post(url,data).then((req:any)=>{})
+        }else{
+            promise= axios.get(url,{params:data})
+        }
+
+        promise.then((req:any)=>{
+            resovle(req.data)
+        }).catch((err:Error)=>{
+            Message.error("请求出错：")
+        })
+    })
+    
+   
 }
 
 export const api_login = (username:string,password:string) => ajax(baseURL+'/login',{username,password},'POST')
@@ -59,3 +75,8 @@ export const api_getplaylist = (id:any) => ajax(musicUrl+'/playlist/track/all',{
 export const api_getMusicBanner = () => ajax(musicUrl+'/banner')
 export const api_getBianChengDetail = (id:any) => ajax(baseURL+'/biancheng/getOnlybiancheng',{"id":id})
 export const api_getSongFormList = (data:any) => ajax(musicUrl+'/personalized',{"limit":data})
+
+
+//video
+ export const api_getVideoSourceList = () => ajax(baseURL+"/video")
+ export const api_videoProxy = (url:any) => ajax(baseURL+"/video/proxy",{"url":url})
