@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { api_getVideoSourceList, api_videoProxy } from '../../tools/ajax';
+import { api_getVideoSourceList} from '../../tools/ajax';
 import {Card, Empty, Input, Select} from "@arco-design/web-react";
 import './home.less'
 import videoType from '../../component/video/videoType';
@@ -28,12 +28,11 @@ const Home = () =>{
     if (videoSourceList?.length){
         return(
             <>
-                <div className='home'>
+                <div className='home'>                 
                     <Card className="videoNavBar" 
                     bodyStyle={{
                         display:"grid",
-                        gridTemplateColumns:"repeat(3, 3fr)",
-                        
+                        gridTemplateColumns:"repeat(3, 3fr)",                       
                     }}
                     >
                         <Select style={{width:200}} defaultValue={videoSourceList[0].name}>

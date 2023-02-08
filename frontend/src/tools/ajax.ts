@@ -28,7 +28,7 @@ const ajax = (url:string,data:object={},method:string="GET")=>{
     return new Promise((resovle:any,reject:any)=>{
         let promise
         if(method==="POST"){
-           promise= axios.post(url,data).then((req:any)=>{})
+           promise= axios.post(url,data)
         }else{
             promise= axios.get(url,{params:data})
         }

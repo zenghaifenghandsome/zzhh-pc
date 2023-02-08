@@ -4,15 +4,16 @@ import { useEffect, useState } from "react";
 import { api_getAllOkBc } from "../../tools/ajax";
 import {Link} from 'react-router-dom';
 import './bc.less';
-import MainSpin from "../../component/mainSpin/mainSpin";
 
 const Bc = () =>{
     const [bcs,setBcs] = useState<any>([])
 
+    const getAllOkBc = async() =>{
+        let result:any = await api_getAllOkBc()
+        setBcs(result.data)
+    }
     useEffect(()=>{
-        api_getAllOkBc().then((req:any)=>{
-            setBcs(req.data.data)
-        }).catch((err:any)=>{console.log(err)})
+        getAllOkBc()
     },[])
     if(bcs.length<=0){
         return <Empty />

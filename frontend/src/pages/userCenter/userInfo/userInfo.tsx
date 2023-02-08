@@ -23,14 +23,14 @@ const UserInfo = () =>{
         route("/userCenter");
     }
     useEffect(()=>{
+        const getUserInfo = async (id:number) =>{
+            let result:any = await api_getUserInfo(id)
+            setInfo(result.userinfo)
+        }
         if(userinfo===null || userinfo===undefined){
             route("/login")
         }else{
-            console.log(userinfo)
-            api_getUserInfo(userinfo.userid).then((req:any)=>{
-                console.log(req.data)
-                setInfo(req.data.userinfo)
-            }).catch((err:any)=>{console.log(err)})
+           getUserInfo(userinfo.userid)
         }
        
     },[userinfo])
@@ -38,31 +38,37 @@ const UserInfo = () =>{
     const onSelectfile = () =>{
         fileRef.current.click()
     }
-    const upload = (file:any) =>{
-        const formData = new FormData();
-        formData.append("imgfile",file)
+    const updataUserInfoOneField = async(user:any) =>{
+        let result:any = await api_updataUserInfoOneField(user);
+        if(result.status===200){
+            Message.success(result.msg)
+            userUpdata()
+            dispatch(updata())
+        }else{
+            Message.error(result.msg)
+        }
+    }
+    const uploads = async (formData:any) =>{
         //console.log(formData)
-        api_upload(formData).then((req:any)=>{
-            //console.log(req.data.url)
-            api_updataUserInfoOneField({
-                userid:userinfo.userid,
-                field:"avater",
-                newDate:req.data.url
-            }).then((req:any)=>{
-                console.log(req)
-                if(req.data.status===200){
-                    Message.success(req.data.msg)
-                    userUpdata()
-                    dispatch(updata())
-                }else{
-                    Message.error(req.data.msg)
-                }
-            }).catch((err:any)=>{console.log(err)})
-        }).catch((err:any)=>{console.log(err)})
+        let user:any = await api_upload(formData)
+        console.log(user.url)
+        await updataUserInfoOneField({
+            userid:userinfo.userid,
+            field:"avater",
+            newDate:user.url
+        })
+        
+    }
+    const upload =  (file:any) =>{
+        console.log("ssssssssssssssssssssss")
+        const formData:FormData = new FormData();
+        formData.append("imgfile",file)
+        console.log(formData.get("imgfile"))
+        uploads(formData)
     }
 
     const selectFiles = (event:any) =>{
-       // console.log(event.target.files[0])
+        //console.log(event.target.files[0])
         upload(event.target.files[0])
     }
     if(userinfo===null || userinfo===undefined){

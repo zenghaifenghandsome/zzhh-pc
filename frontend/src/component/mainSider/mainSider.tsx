@@ -33,27 +33,27 @@ const MainSider = () =>{
     }
     return(
         <>
-            <Menu theme="light"
+            <Menu className="main-sider"
             selectedKeys={selectKey} onClickMenuItem={menuClick} style={{height:'100%',position:'fixed',top:0,left:0,zIndex:10}}>
-                <Menu.Item key='/'>
+                <Menu.Item className="menuButton" key='/'>
                     <IconHome />home
                 </Menu.Item>
-                <Menu.Item key='/bc'>
+                <Menu.Item className="menuButton" key='/bc'>
                     <IconCode />bc
                 </Menu.Item>
-                <Menu.Item key='/music'>
+                <Menu.Item className="menuButton" key='/music'>
                     <IconMusic />music
                 </Menu.Item>
-                <Menu.Item key='/blog'>
+                <Menu.Item className="menuButton" key='/blog'>
                     <IconBook />blog
                 </Menu.Item>
-                <Menu.Item key='/money'>
+                <Menu.Item className="menuButton" key='/money'>
                     <IconAlipayCircle />记账
                 </Menu.Item>
-                <Menu.Item key='/todo'>
+                <Menu.Item className="menuButton" key='/todo'>
                     <IconSelectAll />待办
                 </Menu.Item>
-                <Menu.Item key='/admin'>
+                <Menu.Item className="menuButton" key='/admin'>
                     <IconApps />后台管理
                 </Menu.Item>
             </Menu>

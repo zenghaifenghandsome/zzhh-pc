@@ -1,20 +1,22 @@
 import {useNavigate,useRoutes} from 'react-router-dom'
-import {Button,Layout,Menu} from '@arco-design/web-react'
+import {Layout} from '@arco-design/web-react'
 import router from './router/router';
 import MainSider from './component/mainSider/mainSider';
 import MainHeader from './component/mainHeader/mainHeader';
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
 import MainSpin from './component/mainSpin/mainSpin';
 import './app.less'
 import SecondMenu from './component/secondMenu/secondMenu';
+import "./theme/theme.less"
 function App() {
+  const [theme,setTheme] = useState<string>("theme-dark")
   const routers = useRoutes(router)
   const nav = useNavigate()
   const to = () =>{
     nav('/')
   }
   return (
-    <div>
+    <div className={theme}>
         <Layout>
           <Layout.Sider collapsed={true} style={{height:'100vh'}}><MainSider /></Layout.Sider>
           <Layout >
@@ -23,7 +25,7 @@ function App() {
               <Layout.Content >
                 <Suspense fallback={<MainSpin/>}>{routers}</Suspense>
               </Layout.Content>
-              <Layout.Sider style={{width:"60px"}}><SecondMenu /></Layout.Sider>
+              <Layout.Sider style={{width:"60px"}} className="second-menu"><SecondMenu /></Layout.Sider>
             </Layout>
             
           </Layout>

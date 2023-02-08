@@ -69,7 +69,7 @@ const SecondMenu = () =>{
     }
   }
   return(
-    <div style={{position:'fixed',top:60,right:0,width:55}}>
+    <div className="second-menu" style={{position:'fixed',top:60,right:0,width:55}}>
       <div style={{position:'relative',display:'block'}}>
         <Dropdown droplist={droplist}> {
           userinfo===undefined?<Avatar size={50} onClick={userHandle}>user</Avatar>:<Avatar size={50} onClick={userHandle}><img style={{width:50}} src={userinfo.avator} alt="avator" /></Avatar>

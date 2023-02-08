@@ -1,5 +1,5 @@
-import { Card,Button} from "@arco-design/web-react";
-import { useEffect, useState } from "react";
+import { Button, Card} from "@arco-design/web-react";
+import { useState } from "react";
 import './mainHeader.less'
 
 const MainHeader = () =>{
@@ -60,13 +60,13 @@ const MainHeader = () =>{
     }
     return(
         <div className="main-header">
-            <Card className="main-header" onMouseMove={setwind} onMouseDown={windMove} onMouseUp={mup} onMouseOut={cancelMoveWindows}> 
+            <div className="main-header" onMouseMove={setwind} onMouseDown={windMove} onMouseUp={mup} onMouseOut={cancelMoveWindows}> 
                 <div className="main-header-buttonGroup">
                     <Button status="warning" shape="circle" type="primary" onClick={minWind} style={{marginRight:'5px'}}>-</Button>
                     <Button status="success" shape="circle" type="primary" onClick={e=>maxWind(winState)} style={{marginRight:'5px'}}>+</Button>
                     <Button status="danger" shape="circle" type="primary" onClick={quitApp} style={{marginRight:'5px'}}>x</Button>
                 </div>
-            </Card>
+            </div>
         </div>
     )
 }

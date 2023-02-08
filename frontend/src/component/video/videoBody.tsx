@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { api_getVideoList, api_videoProxy } from "../../tools/ajax";
+import { api_getVideoList} from "../../tools/ajax";
 import MainSpin from "../mainSpin/mainSpin";
 import {XMLParser} from "fast-xml-parser"
 import VideoCard from "./videoCard";
@@ -32,7 +32,7 @@ const VideoBody:React.FC<videoBodyProps> = (prop:videoBodyProps) =>{
     return(
         <>
             {isLoad? <MainSpin />:<div className="videoCardBox">{videoList.map((video:any)=>
-                <VideoCard key={video.id} pic={video.pic}/>            
+                <VideoCard key={video.id} name={video.name} pic={video.pic}/>            
             )}</div>}
         </>
     )

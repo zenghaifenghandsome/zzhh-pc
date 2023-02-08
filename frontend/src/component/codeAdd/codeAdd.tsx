@@ -1,5 +1,4 @@
-import { Avatar, Button, Cascader, Form, Input, Message, Modal, Upload } from "@arco-design/web-react"
-import useForm from "@arco-design/web-react/es/Form/useForm";
+import { Avatar, Button, Cascader, Form, Input, Message, Modal} from "@arco-design/web-react";
 import {IconCode, IconEdit} from '@arco-design/web-react/icon'
 import { useRef, useState } from "react";
 import { useSelector } from "react-redux";
@@ -18,24 +17,31 @@ const CodeAdd = () =>{
   const linkRef = useRef<any>();
   const describRef = useRef<any>();
   const detailRef = useRef<any>();
-  const tagsRef = useRef<any>();
+  //const tagsRef = useRef<any>();
   const onSelectfile = () =>{
     fileRef.current.click()
   }
   const selectFiles = (event:any) =>{
     upload(event.target.files[0])
   }
-
-  const upload = (file:any) =>{
+  const uploads = async(formData:FormData) =>{
+    let result:any = await api_upload(formData)
+    setBcIcon(result.url)
+  }
+  const upload = async (file:any) =>{
     const formData = new FormData();
     formData.append("imgfile",file)
-    api_upload(formData).then((req:any)=>{
-        //console.log(req.data.url)
-        setBcIcon(req.data.url)
-    }).catch((err:any)=>{console.log(err)})
+    await uploads(formData);
   }
-
-  const doOk = () =>{
+  const addBc = async (bc:any) =>{
+    let result:any = await api_addBc(bc)
+    if(result.status===200){
+      Message.success(result.msg);
+    }else{
+      Message.warning(result.msg)
+    }
+  }
+  const doOk = async () =>{
     let bc = {
       iconaddr:bcIcon,
       title:titleRef.current.dom.value,
@@ -52,14 +58,8 @@ const CodeAdd = () =>{
       status:1,
     }
     //console.log(bc)
-    api_addBc(bc).then((req:any)=>{
-      if(req.data.status===200){
-        Message.success(req.data.msg)
-      }else{
-        Message.warning(req.data.msg)
-      }
-    }).catch((err:any)=>{console.log(err)})
-    setVisi(false)
+    await addBc(bc);
+    setVisi(false);
   }
   const selectTag = (x:any) =>{
     let tagsArray:Array<string> = []
