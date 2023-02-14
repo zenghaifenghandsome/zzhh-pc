@@ -2,8 +2,16 @@
     display: none;
 }
 
+.main-header{
+    --wails-draggable:drag;
+    z-index: 3;
+    .main-header-buttonGroup{
+        --wails-draggable:no-drag;
+    }
+}
 
 .home{
+    
     .videoNavBar{
         position: fixed;
         width: 100%;
@@ -13,6 +21,12 @@
     .videoCardBox{
         position: relative;
         top: 70px;
+
+        .videoCard-desc{
+            .videoCard-desc-info{
+                height: 250px;
+            }
+        }
     }
     .videoCardBox::-webkit-scrollbar{
         display: none;

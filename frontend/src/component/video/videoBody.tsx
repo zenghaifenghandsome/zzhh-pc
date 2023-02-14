@@ -32,7 +32,12 @@ const VideoBody:React.FC<videoBodyProps> = (prop:videoBodyProps) =>{
     return(
         <>
             {isLoad? <MainSpin />:<div className="videoCardBox">{videoList.map((video:any)=>
-                <VideoCard key={video.id} name={video.name} pic={video.pic}/>            
+                <VideoCard 
+                key={video.id} 
+                name={video.name} 
+                pic={video.pic} 
+                desc={video.des}
+                />            
             )}</div>}
         </>
     )
