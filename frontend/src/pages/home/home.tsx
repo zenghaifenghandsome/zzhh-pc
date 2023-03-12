@@ -15,6 +15,7 @@ const Home = () =>{
     useEffect(()=>{
         const getVideoSourceList = async () => {
             let result:any = await api_getVideoSourceList()
+            console.log(result.status);
             if (result.status ===200){
                console.log(result)
                 setVideoSourceList(result.data)

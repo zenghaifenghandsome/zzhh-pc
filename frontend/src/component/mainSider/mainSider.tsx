@@ -1,6 +1,6 @@
 import {Menu} from '@arco-design/web-react';
 import {matchRoutes, useLocation, useNavigate} from 'react-router-dom';
-import {IconHome,IconCode,IconMusic,IconBook,IconAlipayCircle,IconSelectAll,IconApps} from '@arco-design/web-react/icon'
+import {IconBranch,IconHome,IconCode,IconMusic,IconBook,IconAlipayCircle,IconSelectAll,IconApps} from '@arco-design/web-react/icon'
 import { useEffect, useState } from 'react';
 import router from '../../router/router';
 const MainSider = () =>{
@@ -55,6 +55,9 @@ const MainSider = () =>{
                 </Menu.Item>
                 <Menu.Item className="menuButton" key='/admin'>
                     <IconApps />后台管理
+                </Menu.Item>
+                <Menu.Item className="menuButton" key='/evd'>
+                    <IconBranch />每天
                 </Menu.Item>
             </Menu>
         </>

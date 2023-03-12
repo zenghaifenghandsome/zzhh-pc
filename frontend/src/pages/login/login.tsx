@@ -12,6 +12,28 @@ const Login = () =>{
     const [checked, setChecked] = useState<boolean>(false);
     const username = useRef<any>()
     const password = useRef<any>()
+
+    const doLogin = async(username:any,password:any) =>{
+        let re :any = await api_login(username,password)
+        console.log(re)
+        if(re.status ==="200"){
+            saveUser({
+                'avator':re.avator,
+                'refreshToken':re.refreshToken, 
+                //'refreshToken-status':re.data.refreshToken-status,
+                'role':re.role,
+                'token': re.token,
+                'userid':re.userid, 
+                'username':re.username,
+            })
+            route('/') 
+            dispatch(updata())
+        }else{
+            Message.error({content:re.data.message,duration:3000})
+        }
+            
+
+    }
     const handleLogin = () =>{
         console.log(username.current.dom.value,password.current.dom.value)
         if(username.current.dom.value.length ===0){
@@ -19,25 +41,7 @@ const Login = () =>{
         }else if(password.current.dom.value.length ===0){
             Message.error({content:'没密码怎么登录？',duration:3000})
         }else{
-            api_login(username.current.dom.value,password.current.dom.value).then((re:any)=>{
-                console.log(re.data)
-                if(re.data.status ==="200"){
-                    saveUser({
-                        'avator':re.data.avator,
-                        'refreshToken':re.data.refreshToken, 
-                        //'refreshToken-status':re.data.refreshToken-status,
-                        'role':re.data.role,
-                        'token': re.data.token,
-                        'userid':re.data.userid, 
-                        'username':re.data.username,
-                    })
-                   route('/') 
-                   dispatch(updata())
-                }else{
-                    Message.error({content:re.data.message,duration:3000})
-                }
-                
-            }).catch((err:any)=>{console.log(err)})
+            doLogin(username.current.dom.value,password.current.dom.value)
         }
     }
 

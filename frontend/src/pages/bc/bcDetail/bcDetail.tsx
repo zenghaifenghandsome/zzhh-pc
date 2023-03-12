@@ -11,11 +11,14 @@ import './bcDetail.less';
 const BcDetail = () =>{
     const [bcDetail,setBcDetail] = useState<any>(null);
     let props = useParams()
+
+    const getDetail = async (id:any) =>{
+        let result:any = await api_getBianChengDetail(id);
+        console.log(result)
+        setBcDetail(result.bcInfo);
+    }
     useEffect(()=>{
-        console.log(props)
-        api_getBianChengDetail(props.id).then((req:any)=>{
-            setBcDetail(req.data.bcInfo)
-        }).catch((err:any)=>{console.log(err)})
+        getDetail(props.id);
     },[])
     if(bcDetail===null) {return <MainSpin />}
     return(

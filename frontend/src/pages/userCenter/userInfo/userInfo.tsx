@@ -60,7 +60,7 @@ const UserInfo = () =>{
         
     }
     const upload =  (file:any) =>{
-        console.log("ssssssssssssssssssssss")
+        //console.log("ssssssssssssssssssssss")
         const formData:FormData = new FormData();
         formData.append("imgfile",file)
         console.log(formData.get("imgfile"))

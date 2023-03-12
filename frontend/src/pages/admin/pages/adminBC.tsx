@@ -5,20 +5,21 @@ import './adminChildren.less';
 
 const AdminBC =()=>{
     const [bcList,setBcList]= useState<Array<string>>([]);
+    const getbcs = async () =>{
+        let result:any = await api_getAllBCs();
+        setBcList(result.data);
+    }
+    const deletbc = async (id:any) =>{
+        let result:any = await api_deleteBc(id);
+        if(result.code===6001){
+            Message.success(result.msg);
+        }
+    }
     useEffect(()=>{
-        api_getAllBCs().then((req:any)=>{
-            console.log(req.data.data);
-            setBcList(req.data.data);
-        }).catch((err:any)=>{console.log(err)
-        })
+        getbcs();
     },[])
     const deletHandle = (id:any) =>{
-        api_deleteBc(id).then((req:any)=>{
-            console.log(req)
-            if(req.data.code===6001){
-                Message.success(req.data.msg)
-            }
-        }).catch((err:any)=>{console.log(err)})
+        deletbc(id);
     }
     if(bcList.length===0){
         return <Empty />

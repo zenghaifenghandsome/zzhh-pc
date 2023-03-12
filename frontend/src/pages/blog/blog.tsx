@@ -7,10 +7,12 @@ import './blog.less';
 import { IconEye, IconMessage, IconThumbUp } from "@arco-design/web-react/icon";
 const Blog = () =>{
     const [blogs,setBlogs] = useState<Array<any>>([]);
+    const getblog = async () =>{
+        let result:any = await api_getAllOkBlogs()
+        setBlogs(result.data)
+    }
     useEffect(()=>{
-        api_getAllOkBlogs().then((req:any)=>{
-            setBlogs(req.data.data)
-        }).catch((err:any)=>{console.log(err)})
+        getblog();
     },[])
     if(blogs.length===0){return <Empty />}
     return(

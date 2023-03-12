@@ -5,6 +5,7 @@ import {removeUser} from "../../tools/localstore";
 import CodeAdd from "../codeAdd/codeAdd";
 import {useSelector,useDispatch} from 'react-redux'
 import { updata } from "../../tools/redux/reducer/userReducer";
+import AddEvd from "../evd/add";
 
 
 
@@ -79,6 +80,7 @@ const SecondMenu = () =>{
         <CodeAdd />
         <Button type="primary" size='large' style={{marginLeft:7,marginBottom:5}} icon={<IconMusic />} onClick={musicHandle}/>
         <Button type="primary" size='large' style={{marginLeft:7,marginBottom:5}} icon={<IconBook />} onClick={toblogEditor}/>
+        <AddEvd />
       </div>
       
     </div>

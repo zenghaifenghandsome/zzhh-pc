@@ -12,7 +12,18 @@ const Register = () =>{
 
     const route = useNavigate();
 
-    const doRegister = () =>{
+   const regist = async(userInfo:any) =>{
+
+    let result:any = await api_register(userInfo)
+            console.log(result)
+        if(result.status===200){
+            Message.success("注册成功！")
+            route("/login")
+        }
+
+
+   }
+    const doRegister =  () =>{
         let userInfo={
             username:usernameRef.current.dom.value,
             password:passwordRef.current.dom.value,
@@ -20,13 +31,8 @@ const Register = () =>{
             email:emailRef.current.dom.value,
             role:"1",
         }
-        api_register(userInfo).then((req:any)=>{
-            //console.log(req.data)
-            if(req.data.status===200){
-                Message.success("注册成功！")
-                route("/login")
-            }
-        }).catch((err:any)=>{console.log(err)})
+        regist(userInfo)
+       
     }
     return(
         <div className='register-box'>

@@ -19,22 +19,27 @@ const Comments:React.FC<commentProps> = (props:any) => {
     const [visible,setVisible] = useState<boolean>(false);
     const [textValue,setTextValue] = useState<any>()
     const userInfo = useSelector((state:any)=>state.user.value)
+
+    const getComment = async (id:any) =>{
+        let result:any = await api_getBcComment(id)
+        setThisComment(result.data);
+    }
+    const addComment = async(comment:any) =>{
+        let result:any = await api_addBcComment(comment);
+
+    }
     useEffect(()=>{
         /**
          * @commentId: bcId编程导航id 
          */
-        api_getBcComment(commentId).then((req:any)=>{
-            setThisComment(req.data.data)
-        }).catch((err:any)=>{console.log(err)})
+        getComment(commentId);
     },[])
     const reload = () =>{
         console.log('reload 调用')
         setisReload(!isreload)
     }
     useEffect(()=>{
-        api_getBcComment(commentId).then((req:any)=>{
-            setThisComment(req.data.data)
-        }).catch((err:any)=>{console.log(err)})
+        getComment(commentId);
     },[isreload,visible])
 
     const inputText = (text:string) =>{
@@ -52,13 +57,8 @@ const Comments:React.FC<commentProps> = (props:any) => {
             LikeNumb:0,
             LowNumb:0,
         }
-        api_addBcComment(comment).then((req:any)=>{
-            console.log(req)
-        }).catch((err:any)=>{console.log(err)})
-
-        api_getBcComment(commentId).then((req:any)=>{
-            setThisComment(req.data.data)
-        }).catch((err:any)=>{console.log(err)})
+        addComment(comment);
+        getComment(commentId);
     }
     return(
         <>

@@ -15,12 +15,13 @@ const VideoBody:React.FC<videoBodyProps> = (prop:videoBodyProps) =>{
        const getUrl = async (url:string,t:string,pg:number) =>{
             const parser = new XMLParser();
             let result:any = await api_getVideoList(url,t,pg)
+            console.log(result.data)
             let json = parser.parse(result.data)
             console.log(json.rss.list.video)
             setVideoList(json.rss.list.video)
             setIsLoad(false)
        }
-       //console.log(prop.sourceUrl)
+       console.log("a"+prop.sourceUrl)
        if (prop.sourceUrl !==undefined){
             //console.log(prop.sourceUrl)
             getUrl(prop.sourceUrl,"电影",1)
