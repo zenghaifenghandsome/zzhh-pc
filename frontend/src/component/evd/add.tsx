@@ -1,13 +1,35 @@
-import { Button, Input, Modal, Upload } from "@arco-design/web-react";
+import { Button, Input, Message, Modal, Upload } from "@arco-design/web-react";
 import { IconBranch } from "@arco-design/web-react/icon";
 import { FC, useRef, useState } from "react";
-import { api_updataUserInfoOneField, api_upload } from "../../tools/ajax";
+import { useSelector } from "react-redux";
+import { api_evd_addEvd, api_upload } from "../../tools/ajax";
+
+interface evdBody{
+    userid:string,
+    imgList?:string,
+    content?:string
+}
+
+const addevd = async (evdBody:evdBody) =>{
+    let result:any = await api_evd_addEvd(evdBody);
+    if (result.status=200){
+        Message.success({
+            content:result.msg
+        })
+    }else{
+        Message.error({
+            content:result.msg
+        })
+    }
+}
 
 const AddEvd:FC = () =>{
     const [isVisi,setVisi] = useState<boolean>(false);
     const [isLoad,setLoad] = useState<boolean>(false);
+    const userinfo = useSelector((state:any)=> state.user.value)
     const [fileList,setFileList] = useState<Array<string>>([]);
     const fileRef = useRef<any>();
+    const contentRef = useRef<any>();
     const selectFile = () =>{
         fileRef.current.click();
         setLoad(true);
@@ -33,7 +55,14 @@ const AddEvd:FC = () =>{
 
     }
     const Ok = async () => {
-        
+        let evdBody:evdBody = {
+            userid:userinfo.userid+"",
+            imgList:fileList.toString(),
+            content:contentRef.current.dom.value
+        }
+        console.log(evdBody);
+        addevd(evdBody);
+        setVisi(false);
 
     }
     return(
@@ -57,7 +86,7 @@ const AddEvd:FC = () =>{
                     )):null}</div>
                 </div>
                 <div>
-                    <Input.TextArea />
+                    <Input.TextArea ref={contentRef}/>
                 </div>
             </Modal>
         </>
